@@ -3330,23 +3330,13 @@ class="fab fa-instagram"></i></a></li>
                                                                                 <p role=status aria-live=polite aria-atomic=true></p>
                                                                                 <ul></ul>
                                                                             </div>
-                                                                            <form action=https://webredox.net/demo/wp/trion/light/contacts/#wpcf7-f199-p71-o1 method=post class="wpcf7-form init" novalidate=novalidate data-status=init>
-                                                                                <div style="display: none;">
-                                                                                    <input type=hidden name=_wpcf7 value=199>
-                                                                                    <input type=hidden name=_wpcf7_version value=5.5.4>
-                                                                                    <input type=hidden name=_wpcf7_locale value=en_US>
-                                                                                    <input type=hidden name=_wpcf7_unit_tag value=wpcf7-f199-p71-o1>
-                                                                                    <input type=hidden name=_wpcf7_container_post value=71>
-                                                                                    <input type=hidden name=_wpcf7_posted_data_hash value></div>
-                                                                                <div class=input-wrap><i class="fal fa-user-plus"></i><span class="wpcf7-form-control-wrap your-name"><input
-type=text name=your-name value size=40 class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required=true aria-invalid=false placeholder=Name></span></div>
-                                                                                <div class=input-wrap><i class="fal fa-envelope"></i><span class="wpcf7-form-control-wrap your-email"><input
-type=email name=your-email value size=40 class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required=true aria-invalid=false placeholder=E-mail></span></div>
-                                                                                <p><span class="wpcf7-form-control-wrap your-message"><textarea name=your-message cols=40 rows=10 class="wpcf7-form-control wpcf7-textarea" aria-invalid=false placeholder=Message></textarea></span></p>
-                                                                                <p><button id=submit class="btn hide-icon wpcf7-form-control wpcf7-submit"><i
-class="fas fa-caret-right"></i><span>Send Message</span></button></p>
-                                                                                <div class=wpcf7-response-output aria-hidden=true></div>
-                                                                            </form>
+                                                                            <form id="concatc-form" class="wpcf7-form init">
+                                                                              <div class=input-wrap><i class="fal fa-user-plus"></i><span class="wpcf7-form-control-wrap your-name"><input id="contact-form-name-field" type=text name=name value size=40 class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" placeholder=Name></span></div>
+                                                                              <div class=input-wrap><i class="fal fa-envelope"></i><span class="wpcf7-form-control-wrap your-email"><input id="contact-form-email-field" type=email name=email value size=40 class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" placeholder=E-mail></span></div>
+                                                                              <p><span class="wpcf7-form-control-wrap your-message"><textarea id="contact-form-message-field" name=message cols=40 rows=10 class="wpcf7-form-control wpcf7-textarea" aria-invalid=false placeholder=Message></textarea></span></p>
+                                                                              <button id=submit class="btn hide-icon wpcf7-form-control wpcf7-submit"><i class="fas fa-caret-right"></i><span>Send Message</span></button>
+                                                                              <div class=wpcf7-response-output aria-hidden=true></div>
+                                                                            </form>                                                                      
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -3438,6 +3428,35 @@ class="fas fa-caret-up"></i></a></div>
     <script src='../wp-includes/js/comment-reply.min74e5.js?ver=5.9.1' id=comment-reply-js></script>
     <script src='../wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min8e94.js?ver=6.8.0' id=wpb_composer_front_js-js></script>
     <script defer src='../wp-content/plugins/mailchimp-for-wp/assets/js/forms81db.js?ver=4.8.6' id=mc4wp-forms-api-js></script>
+
+
+
+    
+<script>
+  const sendMessage = (data) => {
+  jQuery.ajax({
+    url: "../contact.php",
+    type: "GET",
+    data,
+    success: function (html) {
+      console.log({
+        html,
+      });
+    },
+  });
+};
+
+jQuery("#concatc-form").submit((e) => {
+  e.preventDefault();
+
+  const name = document.querySelector("#contact-form-name-field").value;
+  const email = document.querySelector("#contact-form-email-field").value;
+  const message = document.querySelector("#contact-form-message-field").value;
+
+  sendMessage({ name, email, message });
+});
+
+</script>
 </body>
 <!-- Mirrored from webredox.net/demo/wp/trion/light/contacts/ by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 28 Feb 2022 17:38:10 GMT -->
 <!-- Added by HTTrack -->
@@ -3445,3 +3464,6 @@ class="fas fa-caret-up"></i></a></div>
 <!-- /Added by HTTrack -->
 
 </html>
+
+
+
