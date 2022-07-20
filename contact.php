@@ -5,7 +5,7 @@ if (isset($_GET['name']) && isset($_GET['email']) && isset($_GET['message'])) {
 
   try {
 
-    $to = "mohammadahmermalick@gmail.com";
+    $to = "bella.selfdigitizer@gmail.com";
 
     $subject = "Self Digitizers contact";
     $txt = $_GET['message'];
